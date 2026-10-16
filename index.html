@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+
+  <title>CodeStudio — Online HTML Editor</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+    <!-- Header -->
+    <header class="topbar">
+
+      <a class="brand" href="#" aria-label="CodeStudio home">
+        <span class="brand-mark">&lt;/&gt;</span>
+
+        <span>
+          Code<span class="brand-accent">Studio</span>
+          <small>ONLINE PLAYGROUND</small>
+        </span>
+      </a>
+
+      <div class="top-actions">
+
+        <span class="save-status">
+          <i class="status-dot"></i>
+          <span id="saveStatus">Ready to code</span>
+        </span>
+
+        <button class="icon-button"
+                id="themeToggle"
+                title="Toggle theme"
+                aria-label="Toggle theme">
+          ☼
+        </button>
+
+        <button class="button button-quiet" id="resetBtn">
+          ↺ <span>Reset</span>
+        </button>
+
+        <button class="button button-primary" id="runBtn">
+          ▶ <span>Run Code</span>
+        </button>
+
+      </div>
+    </header>
+
+    <!-- Main workspace -->
+    <main class="workspace">
+
+      <!-- Introduction -->
+      <section class="intro-row">
+
+        <div>
+          <p class="eyebrow">YOUR CREATIVE PLAYGROUND</p>
+
+          <h1>
+            Build something <span>amazing.</span>
+          </h1>
+
+          <p class="subtitle">
+            লিখো, রান করো, আর সঙ্গে সঙ্গে তোমার কাজের ফলাফল দেখো।
+          </p>
+        </div>
+
+        <div class="project-chip">
+          <span class="chip-icon">✦</span>
+
+          <span>
+            <b>Untitled Project</b>
+            <small>Local workspace</small>
+          </span>
+        </div>
+
+      </section>
+
+      <!-- Editor and preview -->
+      <section class="editor-layout"
+               aria-label="Code editor workspace">
+
+        <!-- Code editor -->
+        <div class="editors-column">
+
+          <div class="panel-heading">
+            <div>
+              <span class="heading-dot"></span>
+              <strong>Code Editor</strong>
+            </div>
+
+            <span class="shortcut-hint">
+              Ctrl + Enter to run
+            </span>
+          </div>
+
+          <!-- Language tabs -->
+          <div class="editor-tabs"
+               role="tablist"
+               aria-label="Code language">
+
+            <button class="editor-tab active"
+                    data-tab="html"
+                    role="tab"
+                    aria-selected="true">
+
+              <span class="lang-icon html-icon">5</span>
+              HTML
+              <span class="tab-count">01</span>
+
+            </button>
+
+            <button class="editor-tab"
+                    data-tab="css"
+                    role="tab"
+                    aria-selected="false">
+
+              <span class="lang-icon css-icon">✳</span>
+              CSS
+              <span class="tab-count">02</span>
+
+            </button>
+
+            <button class="editor-tab"
+                    data-tab="js"
+                    role="tab"
+                    aria-selected="false">
+
+              <span class="lang-icon js-icon">JS</span>
+              JavaScript
+              <span class="tab-count">03</span>
+
+            </button>
+
+          </div>
+
+          <!-- Code input -->
+          <div class="code-panel">
+
+            <div class="code-toolbar">
+
+              <span id="fileName">index.html</span>
+
+              <div class="toolbar-actions">
+
+                <span class="live-label">
+                  <i></i> EDITING
+                </span>
+
+                <button class="mini-button"
+                        id="copyBtn"
+                        title="Copy current code">
+                  ▢ Copy
+                </button>
+
+              </div>
+            </div>
+
+            <div class="editor-wrap">
+
+              <div class="line-numbers"
+                   id="lineNumbers"
+                   aria-hidden="true">1</div>
+
+              <textarea id="codeEditor"
+                        spellcheck="false"
+                        autocapitalize="off"
+                        autocomplete="off"
+                        autocorrect="off"
+                        aria-label="Code editor"></textarea>
+
+            </div>
+
+            <div class="editor-footer">
+
+              <span id="lineCount">1 line</span>
+
+              <span>
+                UTF-8 <b>•</b>
+                <span id="langLabel">HTML</span>
+              </span>
+
+            </div>
+          </div>
+
+          <div class="editor-note">
+            <span>💡</span>
+            <span>
+              টিপস:
+              <kbd>Ctrl</kbd> +
+              <kbd>Enter</kbd>
+              চাপলে কোড রান হবে।
+            </span>
+          </div>
+
+        </div>
+
+        <!-- Live preview -->
+        <div class="preview-column">
+
+          <div class="panel-heading preview-heading">
+
+            <div>
+              <span class="heading-dot preview-dot"></span>
+              <strong>Live Preview</strong>
+            </div>
+
+            <div class="preview-actions">
+
+              <span class="live-label">
+                <i></i> LIVE
+              </span>
+
+              <button class="mini-button"
+                      id="refreshBtn"
+                      title="Refresh preview">
+                ⟳ Refresh
+              </button>
+
+            </div>
+          </div>
+
+          <div class="preview-frame">
+
+            <div class="browser-bar">
+
+              <div class="traffic-lights">
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+
+              <div class="address-bar">
+                <span>⌕</span>
+                preview.codestudio.local
+              </div>
+
+              <span class="browser-menu">•••</span>
+
+            </div>
+
+            <iframe id="preview"
+                    title="Code output preview"
+                    sandbox="allow-scripts"></iframe>
+
+          </div>
+
+          <div class="preview-footer">
+
+            <span>
+              <i class="status-dot"></i>
+              Preview ready
+            </span>
+
+            <button class="mini-button" id="openPreviewBtn">
+              ↗ Open preview
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Feature cards -->
+      <section class="bottom-info">
+
+        <div class="info-card">
+
+          <span class="info-icon purple">⌘</span>
+
+          <div>
+            <b>Write code</b>
+            <p>
+              HTML, CSS এবং JavaScript আলাদাভাবে লেখো।
+            </p>
+          </div>
+
+        </div>
+
+        <div class="info-card">
+
+          <span class="info-icon blue">⚡</span>
+
+          <div>
+            <b>Instant results</b>
+            <p>
+              Run করলেই আউটপুট প্রিভিউতে দেখাবে।
+            </p>
+          </div>
+
+        </div>
+
+        <div class="info-card">
+
+          <span class="info-icon green">⇩</span>
+
+          <div>
+            <b>Take it with you</b>
+            <p>
+              তোমার প্রজেক্ট HTML ফাইল হিসেবে ডাউনলোড করো।
+            </p>
+          </div>
+
+          <button class="download-button"
+                  id="downloadBtn"
+                  title="Download project">
+            ↓
+          </button>
+
+        </div>
+
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+
+        <span>© 2026 CodeStudio Playground</span>
+
+        <span>
+          Made for curious minds <b>♥</b>
+        </span>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+  <!-- Notifications -->
+  <div class="toast"
+       id="toast"
+       role="status"
+       aria-live="polite"></div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+</html>
